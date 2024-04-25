@@ -85,7 +85,7 @@ h5{
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #28A745;
+  background: black;
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -99,7 +99,7 @@ h5{
 }
 
 .back-to-top:hover {
-  background: black;
+  background: rgb(94, 59, 151);
   color: #fff;
 }
 
@@ -819,6 +819,7 @@ section {
 
 .skills .content ul li {
   padding-bottom: 10px;
+  /* padding-left: 50px; */
 }
 
 .skills .content ul i {
@@ -1517,6 +1518,7 @@ section {
   padding: 30px;
   background: #fff;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+  width: 800px;
 }
 
 .contact .email-form .form-group {
