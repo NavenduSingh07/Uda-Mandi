@@ -32,6 +32,8 @@
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
 
 
   <!-- Template Main CSS File -->
@@ -59,31 +61,38 @@
     .animated {
       animation: up-down 2s ease-in-out infinite alternate-reverse both;
     }
+
     .navbar.scrolled {
-    /* background-color: rgb(198, 198, 241) !important; */
-    background: linear-gradient(45deg, rgba(86, 58, 250, 0.9) 0%, rgba(116, 15, 214, 0.9) 100%) !important; /* Change to your desired blue color */
-}
-/* @media (max-width: 991.98px) {
+      /* background-color: rgb(198, 198, 241) !important; */
+      background: linear-gradient(45deg, rgba(86, 58, 250, 0.9) 0%, rgba(116, 15, 214, 0.9) 100%) !important;
+      /* Change to your desired blue color */
+    }
+
+    /* @media (max-width: 991.98px) {
     .navbar.scrolled.bg-transparent {
         background-color: transparent !important;
     }
 } */
 
-@media (min-width: 992px) {
-    .navbar.scrolled {
-        background-color: blue !important; /* Blue background when scrolled in desktop view */
+    @media (min-width: 992px) {
+      .navbar.scrolled {
+        background-color: blue !important;
+        /* Blue background when scrolled in desktop view */
+      }
     }
-}
 
 
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: transparent; /* Navbar initially transparent */
-  transition: background-color 0.3s ease-in-out; /* Smooth transition */
-  z-index: 1000; /* Ensure navbar stays above other content */
-}
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: transparent;
+      /* Navbar initially transparent */
+      transition: background-color 0.3s ease-in-out;
+      /* Smooth transition */
+      z-index: 1000;
+      /* Ensure navbar stays above other content */
+    }
 
 
 
@@ -98,6 +107,22 @@
       }
     }
 
+
+    /* For desktop view */
+    @media (min-width: 768px) {
+      .navbar-collapse {
+        background-color: transparent !important;
+        /* Reset background color for desktop */
+      }
+    }
+
+    /* For mobile view */
+    @media (max-width: 767px) {
+      .navbar-collapse {
+        /* background-color:#6A3CEA !important; Set background color for mobile */
+        background: linear-gradient(45deg, rgba(86, 58, 250, 0.9) 0%, rgba(116, 15, 214, 0.9) 100%);
+      }
+    }
   </style>
 
 </head>
@@ -106,32 +131,33 @@
 
 
   <!-- new header -->
-  <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="navbar" style="height: 58px; ">
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top " id="navbar" style="height: 62px; ">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="./assets/img/u-manlogo.png" alt="U-Man Logo" style="height:42px; margin-left: 15px;"></a>
+      <a class="navbar-brand" href="#"><img src="./assets/img/u-manlogo.png" alt="U-Man Logo"
+          style="height:42px; margin-left: 15px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
-      <div class="collapse navbar-collapse" id="navbarCollapse" style="font-weight: 600; margin-right: 40px;width: 30%;">
+
+      <div class="collapse navbar-collapse" id="navbarCollapse" style="font-weight: 600; width: 30%;">
         <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0" > -->
-         
-          <ul class="navbar-nav ms-auto" style="float: inline-end; margin-right: -50px;">
-            <li class="nav-item">
-                <a class="nav-link scrollto active" href="#hero" >Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link scrollto" href="#about" >About</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link scrollto" href="#services" >Services</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link scrollto" href="#contact">Contact</a>
-            </li>
+
+        <ul class="navbar-nav ms-auto" style="float: inline-end; margin-right: 10px;">
+          <li class="nav-item">
+            <a class="nav-link scrollto active" href="#hero">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link scrollto" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link scrollto" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link scrollto" href="#contact">Contact</a>
+          </li>
         </ul>
-        
+
 
       </div>
     </div>
@@ -143,9 +169,9 @@
 
   <!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top">
     <div class="container-fluid"> -->
-      <!-- <a class="navbar-brand" href="#">Fixed navbar</a> -->
-      <!-- <a href="index.html"><img src="./assets/img/logo.png" alt="U-Man Logo"></a> -->
-      <!-- <a class="navbar-brand" href="index.html">
+  <!-- <a class="navbar-brand" href="#">Fixed navbar</a> -->
+  <!-- <a href="index.html"><img src="./assets/img/logo.png" alt="U-Man Logo"></a> -->
+  <!-- <a class="navbar-brand" href="index.html">
         <img src="./assets/img/u-manlogo.png" alt="U-Man Logo" style="height:60px;">
       </a>
 
@@ -153,11 +179,11 @@
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button> -->
-      <!-- <div class="collapse navbar-collapse" id="navbarCollapse">
+  <!-- <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0" style="margin-left: 700px;">
           <li class="nav-item"> -->
-      <!-- <a class="nav-link active" aria-current="page" href="#hero">Home</a> -->
-      <!-- <a class="nav-link scrollto active"  href="#hero">Home</a>
+  <!-- <a class="nav-link active" aria-current="page" href="#hero">Home</a> -->
+  <!-- <a class="nav-link scrollto active"  href="#hero">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link scrollto" href="#about">About</a>
@@ -169,11 +195,11 @@
             <a class="nav-link scrollto" href="#contact">Contact</a>
           </li>
         </ul> -->
-      <!-- <form class="d-flex" role="search">
+  <!-- <form class="d-flex" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form> -->
-    <!-- </div>
+  <!-- </div>
     </div>
   </nav> -->
   <!-- <header id="header" class="fixed-top">
@@ -581,8 +607,8 @@
 
         <div class="container d-flex justify-content-center">
           <!-- Form HTML -->
-          <form id="contact-form" class="email-form" method="post" action="" class="needs-validation" novalidate
-            style="max-width: 400px;">
+          <form id="contact-form" class="email-form" method="post" action="save_form_data.php" class="needs-validation"
+            novalidate style="max-width: 400px;">
             <!-- Form fields -->
             <div class="mb-3">
               <input type="text" class="form-control" name="name" id="name" placeholder="Your name" autocomplete="on"
@@ -594,6 +620,11 @@
               <input type="email" class="form-control" name="email" id="email" placeholder="Your email" required>
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">Please provide a valid email address.</div>
+            </div>
+            <div class="mb-3">
+              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your phone number" required>
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please provide a valid phone number.</div>
             </div>
             <div class="mb-3">
               <textarea class="form-control" name="message" id="message" placeholder="Your message"
@@ -630,8 +661,9 @@
 
           <div class="col-lg-3 col-md-6 footer-contact">
             <!-- <h3 style="color: white;">U-Man (Uda-Mandi)</h3> -->
-            <a class="navbar-brand" href="#"><img src="./assets/img/u-manlogo.png" alt="U-Man Logo" style="height:42px; margin-bottom: 5px;"></a><br><br>
-            
+            <a class="navbar-brand" href="#"><img src="./assets/img/u-manlogo.png" alt="U-Man Logo"
+                style="height:42px; margin-bottom: 5px;"></a><br><br>
+
             <p style="color: white;">
               Unit 317
               Road/Street: Bye-Pass Road, Mathura Road Faridabad<br>
@@ -650,9 +682,6 @@
 
             </div>
           </div>
-
-
-
         </div>
       </div>
     </div>
@@ -666,12 +695,40 @@
       </div>
       <script>document.getElementById("currentYear").innerText = new Date().getFullYear();</script>
 
-      <div class="credits" >
+      <div class="credits">
 
         Designed by <a href="https://" style="color: white;">Developer Team</a>
       </div>
     </div>
   </footer><!-- End Footer -->
+  <!-- SweetAlert start -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Function to parse query string parameters
+      function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+      }
+
+      // Get message from query parameter
+      const message = getQueryParam('message');
+
+      // Display message with SweetAlert
+      if (message) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Message',
+          text: decodeURIComponent(message),
+          onClose: function () {
+            // Redirect to remove message from URL
+            window.location.href = 'index.html';
+          }
+        });
+      }
+    });
+  </script>
+  <!-- SweetAlert end -->
+
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
@@ -708,32 +765,14 @@
 
 
 
-    window.addEventListener('scroll', function() {
-  var navbar = document.querySelector('.navbar');
-  if(window.scrollY > 50) { // Change 50 to whatever scroll position you prefer
-    navbar.style.backgroundColor = '#612BDE'; // Change color as needed
-  } else {
-    navbar.style.backgroundColor = 'transparent'; // Reset to transparent
-  }
-});
-
-
-
-
-//     $(document).ready(function() {
-//     $(window).scroll(function() {
-//         if ($(this).scrollTop() > 50) { 
-//             $('#navbar').addClass('scrolled');
-//         } else {
-//             $('#navbar').removeClass('scrolled');
-//         }
-//     });
-// });
-
-
-
-
-
+    window.addEventListener('scroll', function () {
+      var navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) { // Change 50 to whatever scroll position you prefer
+        navbar.style.backgroundColor = '#612BDE'; // Change color as needed
+      } else {
+        navbar.style.backgroundColor = 'transparent'; // Reset to transparent
+      }
+    });
 
 
   </script>
@@ -758,7 +797,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
-  <!-- Your form HTML -->
+
 
 </body>
 
