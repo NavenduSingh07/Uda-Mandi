@@ -568,6 +568,7 @@ section {
   padding-right: 30px;
   outline: none;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .why-us .accordion-list span {
