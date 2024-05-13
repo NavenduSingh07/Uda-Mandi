@@ -1,4 +1,5 @@
 <?php
+ include '../db/db_connect.php';
 session_start();
 
 
@@ -9,16 +10,16 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 // Database connection
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "contact";
+// $servername = "localhost";
+// $username = "root";
+// $password = "";
+// $database = "contact";
 
-$conn = mysqli_connect($servername, $username, $password, $database);
+// $conn = mysqli_connect($servername, $username, $password, $database);
 
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
 
 // Pagination
 $results_per_page = 10;
@@ -48,7 +49,7 @@ $total_records = $row_total_records['total_records'];
 $total_pages = ceil($total_records / $results_per_page);
 
 // Retrieve data with pagination and search term
-$sql = "SELECT * FROM contact_messages";
+$sql = "SELECT * FROM contact_messages ORDER BY created_at DESC";
 if (!empty($search_term)) {
     $sql .= " WHERE name LIKE '%$search_term%' OR email LIKE '%$search_term%' OR phone LIKE '%$search_term%' OR message LIKE '%$search_term%'";
 }
@@ -116,16 +117,32 @@ if (isset($_GET['logout'])) {
                 </thead>
                 <tbody>
                     <?php
+                    // if (mysqli_num_rows($result) > 0) {
+                    //     while ($row = mysqli_fetch_assoc($result)) {
+                    //         echo "<tr>";
+                    //         echo "<td>" . $row['id'] . "</td>";
+                    //         echo "<td>" . $row['name'] . "</td>";
+                    //         echo "<td>" . $row['email'] . "</td>";
+                    //         echo "<td>" . $row['phone'] . "</td>";
+                    //         echo "<td>" . $row['message'] . "</td>";
+                    //         echo "<td>" . $row['created_at'] . "</td>";
+                    //         echo "</tr>";
+                    //     }
+                    // } else {
+                    //     echo "<tr><td colspan='6'>No records found</td></tr>";
+                    // }
                     if (mysqli_num_rows($result) > 0) {
+                        $counter = ($page - 1) * $results_per_page + 1; // Initialize counter
                         while ($row = mysqli_fetch_assoc($result)) {
                             echo "<tr>";
-                            echo "<td>" . $row['id'] . "</td>";
+                            echo "<td>" . $counter . "</td>"; // Display counter
                             echo "<td>" . $row['name'] . "</td>";
                             echo "<td>" . $row['email'] . "</td>";
                             echo "<td>" . $row['phone'] . "</td>";
                             echo "<td>" . $row['message'] . "</td>";
                             echo "<td>" . $row['created_at'] . "</td>";
                             echo "</tr>";
+                            $counter++; // Increment counter
                         }
                     } else {
                         echo "<tr><td colspan='6'>No records found</td></tr>";
